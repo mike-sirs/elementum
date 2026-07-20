@@ -188,4 +188,7 @@ jobs:
                 binaries_branch: context.refName
               }
             });
-            
+  bundle:
+    name: Bundle all platforms
+    runs-on: ubuntu-latest
+    needs: build            
