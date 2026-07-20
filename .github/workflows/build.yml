@@ -169,23 +169,5 @@ jobs:
   #       env:
   #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  trigger-downstream:
-    name: Trigger plugin.video.elementum build
-    runs-on: ubuntu-latest
-    needs: bundle
-    steps:
-      - name: Trigger workflow in plugin.video.elementum
-        uses: actions/github-script@v9
-        with:
-          github-token: ${{ secrets.GH_TOKEN }}
-          script: |
-            await github.rest.actions.createWorkflowDispatch({
-              owner: 'elgatito',
-              repo: 'plugin.video.elementum',
-              workflow_id: 'build.yml',
-              ref: 'master',
-              inputs: {
-                binaries_branch: context.refName
-              }
-            });
+
             
